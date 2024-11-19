@@ -5,28 +5,106 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="textoEscaneado">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Resultado del Escaneo</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Contenido del código QR: {{ textoEscaneado }}</p>
-        <p *ngIf="getKeys(datosQR).length > 0">Datos extraídos:</p>
-        <ul *ngIf="getKeys(datosQR).length > 0">
-          <li *ngFor="let key of getKeys(datosQR)">
-            {{ key }}: {{ datosQR[key] }}
-          </li>
-        </ul>
-      </ion-card-content>
-    </ion-card>
-  </div>
-
+  <!-- Botón para iniciar el escaneo -->
   <ion-button expand="full" color="primary" (click)="escanear()">Escanear Código QR</ion-button>
 
+  <!-- Mensaje para el usuario -->
   <ion-card *ngIf="mensaje">
     <ion-card-content>
       <p>{{ mensaje }}</p>
     </ion-card-content>
   </ion-card>
+
+  <!-- Grupo de acordeones para asignaturas -->
+  <ion-accordion-group>
+    <!-- Acordeón de Inglés Intermedio -->
+    <ion-accordion>
+      <ion-item slot="header">
+        <ion-label>Inglés Intermedio</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p *ngIf="!datosIngles.length">No hay datos escaneados aún.</p>
+        <div *ngFor="let dato of datosIngles">
+          <ul>
+            <li><strong>Sección:</strong> {{ dato.seccion }}</li>
+            <li><strong>Fecha:</strong> {{ dato.fecha }}</li>
+            <li><strong>Estado:</strong> {{ dato.estado }}</li>
+          </ul>
+          <hr />
+        </div>
+      </div>
+    </ion-accordion>
+
+    <!-- Repite para las demás asignaturas -->
+    <ion-accordion>
+      <ion-item slot="header">
+        <ion-label>Programación de Aplicaciones Móviles</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p *ngIf="!datosProgramacion.length">No hay datos escaneados aún.</p>
+        <div *ngFor="let dato of datosProgramacion">
+          <ul>
+            <li><strong>Sección:</strong> {{ dato.seccion }}</li>
+            <li><strong>Fecha:</strong> {{ dato.fecha }}</li>
+            <li><strong>Estado:</strong> {{ dato.estado }}</li>
+          </ul>
+          <hr />
+        </div>
+      </div>
+    </ion-accordion>
+
+    <!-- Estadística Descriptiva -->
+    <ion-accordion>
+      <ion-item slot="header">
+        <ion-label>Estadística Descriptiva</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p *ngIf="!datosEstadistica.length">No hay datos escaneados aún.</p>
+        <div *ngFor="let dato of datosEstadistica">
+          <ul>
+            <li><strong>Sección:</strong> {{ dato.seccion }}</li>
+            <li><strong>Fecha:</strong> {{ dato.fecha }}</li>
+            <li><strong>Estado:</strong> {{ dato.estado }}</li>
+          </ul>
+          <hr />
+        </div>
+      </div>
+    </ion-accordion>
+
+    <!-- Calidad del Software -->
+    <ion-accordion>
+      <ion-item slot="header">
+        <ion-label>Calidad del Software</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p *ngIf="!datosCalidad.length">No hay datos escaneados aún.</p>
+        <div *ngFor="let dato of datosCalidad">
+          <ul>
+            <li><strong>Sección:</strong> {{ dato.seccion }}</li>
+            <li><strong>Fecha:</strong> {{ dato.fecha }}</li>
+            <li><strong>Estado:</strong> {{ dato.estado }}</li>
+          </ul>
+          <hr />
+        </div>
+      </div>
+    </ion-accordion>
+
+    <!-- Arquitectura -->
+    <ion-accordion>
+      <ion-item slot="header">
+        <ion-label>Arquitectura</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p *ngIf="!datosArquitectura.length">No hay datos escaneados aún.</p>
+        <div *ngFor="let dato of datosArquitectura">
+          <ul>
+            <li><strong>Sección:</strong> {{ dato.seccion }}</li>
+            <li><strong>Fecha:</strong> {{ dato.fecha }}</li>
+            <li><strong>Estado:</strong> {{ dato.estado }}</li>
+          </ul>
+          <hr />
+        </div>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
 </ion-content>

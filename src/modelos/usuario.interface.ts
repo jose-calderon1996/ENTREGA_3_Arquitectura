@@ -28,8 +28,7 @@ export interface User {
   carrera: string;
 }
 
-// src/models/RegistroUsuario.ts
-// src/models/RegistroUsuario.ts
+
 export interface RegistroUsuario {
   nombre: string;
   comuna: string;
@@ -40,3 +39,8 @@ export interface RegistroUsuario {
   contrasena: string;
 }
 
+interface DatoAsignatura {
+  seccion: string;
+  fecha: string;
+  estado: string;
+}
