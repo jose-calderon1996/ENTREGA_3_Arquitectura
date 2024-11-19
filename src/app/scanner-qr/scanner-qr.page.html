@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Escanear Código QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="textoEscaneado">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Resultado del Escaneo</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Contenido del código QR: {{ textoEscaneado }}</p>
+        <p *ngIf="getKeys(datosQR).length > 0">Datos extraídos:</p>
+        <ul *ngIf="getKeys(datosQR).length > 0">
+          <li *ngFor="let key of getKeys(datosQR)">
+            {{ key }}: {{ datosQR[key] }}
+          </li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-button expand="full" color="primary" (click)="escanear()">Escanear Código QR</ion-button>
+
+  <ion-card *ngIf="mensaje">
+    <ion-card-content>
+      <p>{{ mensaje }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
