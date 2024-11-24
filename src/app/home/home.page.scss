@@ -25,3 +25,65 @@
 #container a {
   text-decoration: none;
 }
+
+    
+    ion-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffffff; 
+    }
+
+    
+    .hero-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .hero-image {
+      width: 150px;
+      height: auto;
+      margin: 10px auto;
+      border-radius: 50%; 
+      background-color: #fff; 
+      padding: 10px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #fbc02d; 
+      margin-top: 10px;
+    }
+
+    
+    .intro-card {
+      margin: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #fffde7; 
+    }
+
+    .intro-card ion-card-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #f9a825; 
+    }
+
+    
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .custom-button {
+      margin: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      border: 2px solid #f9a825; 
+    }
+
+    .custom-button:hover {
+      background-color: #fbc02d; 
+      color: white;
+    }
+  
