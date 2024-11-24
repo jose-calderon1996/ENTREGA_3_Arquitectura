@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   // Método para guardar datos adicionales en Firestore
-  async saveUserData(uid: string, data: { nombre: string; comuna: string; direccion: string; fechaNacimiento: string; carrera: string }) {
+  async saveUserData(uid: string, data: { nombre: string; comuna: string; direccion: string; rut: string; correo: string }) {
     return this.firestore.collection('users').doc(uid).set(data);
   }
 
@@ -29,7 +29,21 @@ export class AuthService {
 
   // Método para registrar usuario
   async register(email: string, password: string) {
-    return this.afAuth.createUserWithEmailAndPassword(email, password);
+    const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
+    const uid = userCredential.user?.uid;
+
+    if (uid) {
+      // Guardar datos adicionales
+      const data = {
+        nombre: '', // Puedes ajustar este valor según sea necesario
+        comuna: '', // Puedes ajustar este valor según sea necesario
+        direccion: '', // Puedes ajustar este valor según sea necesario
+        rut: '', // Nuevo campo para RUT
+        correo: email, // Asociar el correo al registro
+      };
+      await this.saveUserData(uid, data);
+    }
+    return userCredential;
   }
 
   // Método para obtener los datos del usuario como Observable
@@ -64,6 +78,7 @@ export class AuthService {
       throw new Error('No hay usuario autenticado para cambiar la contraseña.');
     }
   }
+
   async logout() {
     try {
       await this.afAuth.signOut(); // Cierra sesión en Firebase

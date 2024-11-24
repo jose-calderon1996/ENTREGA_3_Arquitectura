@@ -24,9 +24,10 @@ export interface User {
   nombre: string;
   comuna: string;
   direccion: string;
-  fechaNacimiento: string;
-  carrera: string;
+  rut: string; // Cambiado de fechaNacimiento a rut
+  correo: string; // Cambiado de carrera a correo
 }
+
 
 
 export interface RegistroUsuario {

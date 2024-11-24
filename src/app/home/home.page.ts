@@ -35,4 +35,7 @@ export class HomePage {
   navigateToscaner() {
     this.navCtrl.navigateForward('/scanner-qr');
   }
+  goToHome() {
+    this.navCtrl.navigateForward('/home');
+  }
 }

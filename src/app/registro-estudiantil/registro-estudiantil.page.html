@@ -1,97 +1,162 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" color="success" icon-only="true"></ion-back-button>
-    </ion-buttons>
-    <ion-title color="success" class="ion-text-center">Registro Estudiantil</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="warning">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home" color="dark" icon-only="true">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-back-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center">Registro Estudiantil</ion-title>
+      <ion-buttons slot="end">
+        <ion-button color="dark" (click)="goToHome()" fill="clear">
+          <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content class="ion-padding center-content">
-  
+  <ion-content class="ion-padding center-content">
+    <!-- Sección de Encabezado con Imagen -->
+    <div class="hero-section">
+      <img
+        src="https://static.vecteezy.com/system/resources/previews/017/194/956/non_2x/registration-icon-free-vector.jpg"
+        alt="Registro"
+        class="hero-image"
+      />
+      <h1 class="hero-title">Únete a Compra y Ahorra</h1>
+    </div>
 
-  <form (ngSubmit)="registrar()">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="12">
-          <ion-item>
-            <ion-label color="success" >Nombre</ion-label>
-            <ion-input type="text" [(ngModel)]="datosUsuario.nombre" name="nombre" required></ion-input>
+    <!-- Formulario de Registro -->
+    <ion-card class="form-card">
+      <ion-card-content>
+        <form>
+          <ion-item class="custom-item">
+            <ion-label position="floating" color="warning">Nombre</ion-label>
+            <ion-input
+              [(ngModel)]="datosUsuario.nombre"
+              name="nombre"
+              placeholder="Ingresa tu nombre"
+            ></ion-input>
           </ion-item>
-        </ion-col>
-      </ion-row>
 
-      <ion-row>
-        <ion-col size="12">
-          <ion-item>
-            <ion-label color="success" position="floating">Correo</ion-label>
-            <ion-input type="email" [(ngModel)]="datosUsuario.correo" name="correo" required></ion-input>
+          <ion-item class="custom-item">
+            <ion-label position="floating" color="warning">Comuna</ion-label>
+            <ion-input
+              [(ngModel)]="datosUsuario.comuna"
+              name="comuna"
+              placeholder="Ingresa tu comuna"
+            ></ion-input>
           </ion-item>
-        </ion-col>
-      </ion-row>
 
-      <ion-row>
-        <ion-col size="12">
-          <ion-item>
-            <ion-label color="success" position="floating">Comuna</ion-label>
-            <ion-input type="text" [(ngModel)]="datosUsuario.comuna" name="comuna" required></ion-input>
+          <ion-item class="custom-item">
+            <ion-label position="floating" color="warning">Dirección</ion-label>
+            <ion-input
+              [(ngModel)]="datosUsuario.direccion"
+              name="direccion"
+              placeholder="Ingresa tu dirección"
+            ></ion-input>
           </ion-item>
-        </ion-col>
-      </ion-row>
 
-      <ion-row>
-        <ion-col size="12">
-          <ion-item>
-            <ion-label color="success" position="floating">Dirección</ion-label>
-            <ion-input type="text" [(ngModel)]="datosUsuario.direccion" name="direccion" required></ion-input>
+          <ion-item class="custom-item">
+            <ion-label position="floating" color="warning">RUT</ion-label>
+            <ion-input
+              [(ngModel)]="datosUsuario.rut"
+              name="rut"
+              placeholder="Ingresa tu RUT"
+            ></ion-input>
           </ion-item>
-        </ion-col>
-      </ion-row>
 
-      <ion-row>
-        <ion-col size="12">
-          <ion-item>
-            <ion-label color="success" position="floating">Fecha de Nacimiento</ion-label>
-            <ion-input type="date" [(ngModel)]="datosUsuario.fechaNacimiento" name="fechaNacimiento" required></ion-input>
+          <ion-item class="custom-item">
+            <ion-label position="floating" color="warning">Correo</ion-label>
+            <ion-input
+              [(ngModel)]="datosUsuario.correo"
+              name="correo"
+              type="email"
+              placeholder="Ingresa tu correo"
+            ></ion-input>
           </ion-item>
-        </ion-col>
-      </ion-row>
 
-      <ion-row>
-        <ion-col size="12">
-          <ion-item>
-            <ion-label color="success" position="floating">Carrera</ion-label>
-            <ion-input type="text" [(ngModel)]="datosUsuario.carrera" name="carrera" required></ion-input>
+          <ion-item class="custom-item">
+            <ion-label position="floating" color="warning">Contraseña</ion-label>
+            <ion-input
+              [(ngModel)]="datosUsuario.password"
+              name="password"
+              type="password"
+              placeholder="Ingresa tu contraseña"
+            ></ion-input>
           </ion-item>
-        </ion-col>
-      </ion-row>
 
-      <ion-row>
-        <ion-col size="12">
-          <ion-item>
-            <ion-label color="success" position="floating">Contraseña</ion-label>
-            <ion-input type="password" [(ngModel)]="datosUsuario.contrasena" name="contrasena" required></ion-input>
+          <ion-item class="custom-item">
+            <ion-label position="floating" color="warning">Confirmar Contraseña</ion-label>
+            <ion-input
+              [(ngModel)]="datosUsuario.confirmarPassword"
+              name="confirmarPassword"
+              type="password"
+              placeholder="Confirma tu contraseña"
+            ></ion-input>
           </ion-item>
-        </ion-col>
-      </ion-row>
 
-      <ion-row>
-        <ion-col size="12">
-          <ion-button expand="full" type="submit" color="success">Registrar</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+          <ion-button
+            expand="block"
+            fill="outline"
+            color="warning"
+            (click)="registrarUsuario()"
+            class="custom-button"
+          >
+            Registrar
+          </ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
 
-  <!-- Sección de texto adicional con fondo blanco -->
-  <div style="background-color: white; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-    <h3 style="text-align: center; color: #3880ff;">¿Por qué registrarse?</h3>
-    <p style="text-align: justify; color: #333;">
-      Registrarse es el primer paso para acceder a todas las funcionalidades de nuestra aplicación. 
-      Al completar su registro, podrá asistir a clases de manera eficiente, 
-      recibir notificaciones importantes sobre su asistencia y acceder a recursos diseñados 
-      para facilitar su experiencia académica. ¡No espere más, regístrese y forme parte de 
-      nuestra comunidad educativa!
-    </p>
-  </div>
-</ion-content>
+  <style>
+    /* Estilo del encabezado */
+    ion-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Sección Hero */
+    .hero-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .hero-image {
+      width: 150px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 50%;
+      border: 2px solid #ffcc00;
+      padding: 10px;
+    }
+
+    .hero-title {
+      font-size: 20px;
+      color: #ff9900;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    /* Estilo de la tarjeta */
+    .form-card {
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Campos personalizados */
+    .custom-item {
+      --background: #fffbea;
+      --color: #000;
+      --border-radius: 5px;
+    }
+
+    .custom-button {
+      margin-top: 10px;
+      --border-radius: 20px;
+      font-weight: bold;
+    }
+  </style>
+</div>

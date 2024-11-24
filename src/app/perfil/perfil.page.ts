@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Router } from '@angular/router'; // Importa Router
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -9,22 +8,22 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  nombre: string = '';  // Inicializa las variables
+  nombre: string = '';
   comuna: string = '';
   direccion: string = '';
-  fechaNacimiento: string = '';
-  carrera: string = '';
+  rut: string = '';
+  correo: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.authService.getUserData().subscribe(
       (data) => {
-        this.nombre = data.nombre;
-        this.comuna = data.comuna;
-        this.direccion = data.direccion;
-        this.fechaNacimiento = data.fechaNacimiento;
-        this.carrera = data.carrera;
+        this.nombre = data.nombre || '';
+        this.comuna = data.comuna || '';
+        this.direccion = data.direccion || '';
+        this.rut = data.rut || '';
+        this.correo = data.correo || '';
       },
       (error) => {
         console.error('Error al obtener datos del usuario:', error);
@@ -33,14 +32,18 @@ export class PerfilPage implements OnInit {
   }
 
   navegarEscaner() {
-    this.router.navigate(['/escaner']); // Redirige a la página del escáner
+    this.router.navigate(['/escaner']);
   }
+
   async cerrarSesion() {
     try {
-      await this.authService.logout(); // Llama al método de logout
-      this.router.navigate(['/login']); // Redirige al usuario a la página de login
+      await this.authService.logout();
+      this.router.navigate(['/home']);
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
+  }
+  goToHome() {
+    this.router.navigate(['/home']);
   }
 }
